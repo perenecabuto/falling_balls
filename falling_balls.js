@@ -1,7 +1,8 @@
-$.fn.droppingBalls = function(duration) {
+$.fn.droppingBalls = function(duration, fallingInterval) {
     var balls = $(this),
-        ballsContainers = balls.parent()
-        duration = duration || 300;
+        ballsContainers = balls.parent(),
+        duration = duration || 300,
+        fallingInterval = fallingInterval || 100;
 
     if (! balls[0]) {
         return false;
@@ -33,6 +34,10 @@ $.fn.droppingBalls = function(duration) {
 
         myBalls.css({'margin-top': ballsContainer.height() * -1, 'opacity': 0});
 
-        animateBall(firstBall);
+        ballsContainer.find('.ball').each(function(idx, ball) {
+            setTimeout(function()  {
+                $(ball).animate({'margin-top': 0, 'opacity': 1}, duration, null);
+            }, fallingInterval * idx);
+        });
     });
 };
