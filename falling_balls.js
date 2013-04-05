@@ -36,4 +36,3 @@ $.fn.droppingBalls = function(duration) {
         animateBall(firstBall);
     });
 };
-
