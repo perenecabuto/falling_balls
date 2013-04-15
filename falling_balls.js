@@ -1,8 +1,9 @@
 $.fn.fallingBalls = function(duration, fallingInterval) {
     var balls = $(this),
-        ballsContainers = balls.parent(),
-        duration = duration || 300,
-        fallingInterval = fallingInterval || 100;
+        ballsContainers = balls.parent();
+
+    duration = duration || 300;
+    fallingInterval = fallingInterval || 100;
 
     if (! balls[0]) {
         return false;
@@ -13,16 +14,17 @@ $.fn.fallingBalls = function(duration, fallingInterval) {
             var nextBall = $(this).next('.ball');
             if (nextBall) animateBall(nextBall);
         });
-    }
+    };
 
     ballsContainers.each(function(idx, ballsContainer) {
-        var ballsContainer = $(ballsContainer),
-            myBalls = ballsContainer.find(balls),
+        ballsContainer = $(ballsContainer);
+
+        var myBalls = ballsContainer.find(balls),
             firstBall = myBalls.first();
 
         if (!ballsContainer.hasClass('balls-container')) {
             var myBallsContainer = $('<div class="balls-container" style="overflow: hidden; display: block"></div>'),
-                marginLeft = firstBall.offset().left - ballsContainer.offset().left - parseInt(firstBall.css('margin-left'));
+                marginLeft = firstBall.offset().left - ballsContainer.offset().left - parseInt(firstBall.css('margin-left'), 10);
 
             myBallsContainer.append(myBalls);
             ballsContainer.append(myBallsContainer);
