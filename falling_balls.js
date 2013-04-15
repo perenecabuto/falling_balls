@@ -1,4 +1,4 @@
-$.fn.droppingBalls = function(duration, fallingInterval) {
+$.fn.fallingBalls = function(duration, fallingInterval) {
     var balls = $(this),
         ballsContainers = balls.parent(),
         duration = duration || 300,
